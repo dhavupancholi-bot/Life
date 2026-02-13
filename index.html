@@ -103,13 +103,16 @@ function acceptLove(){
     container.innerHTML = `
         <h1>She Said YES 💖</h1>
         <div id="envelope">
-            <div class="envelope-inner" onclick="flipEnvelope(this)">
-                <div class="envelope-front"><p>Click to Open 💌</p></div>
-                <div class="envelope-back" id="letter">
-                    <img src="photo.jpg" alt="Charmi & Dhaval 💖">
-                </div>
-            </div>
-        </div>
+            <div id="envelope">
+  <div class="envelope-inner" onclick="flipEnvelope(this)">
+    <div class="envelope-front">
+      <p>Click to Open 💌</p>
+    </div>
+    <div class="envelope-back">
+      <img src="photo.jpg" alt="" style="width:100%; max-width:400px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+    </div>
+  </div>
+</div>
     `;
     startFloatingHearts();
 }
