@@ -1,143 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Charmi 💖</title>
-<style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff4b5c, #ff758c);
-    text-align: center;
-    color: white;
-    overflow-x: hidden;
-}
-.container { padding: 30px 15px; }
-h1 { font-size: 2.5rem; }
-.typing { font-size: 1.2rem; margin: 20px auto; max-width: 500px; min-height: 50px; }
-.slideshow-container { position: relative; max-width: 350px; margin: 30px auto; }
-.slide { display: none; position: relative; }
-.slide-img { width: 100%; border-radius: 20px; box-shadow: 0 0 30px rgba(255,105,180,0.8); }
-.caption { position: absolute; bottom: 0; width: 100%; font-size:16px; font-weight:bold; background: rgba(255,0,102,0.6); padding:8px; border-radius:0 0 20px 20px; animation: floatText 2s ease-in-out infinite alternate; }
-@keyframes floatText { from {transform: translateY(0px);} to {transform: translateY(-5px);} }
-.fade { animation: fadeEffect 1.5s; }
-@keyframes fadeEffect { from {opacity:0.4;} to {opacity:1;} }
-#proposal { margin-top:30px; display:none; }
-button { padding:12px 25px; font-size:18px; border:none; border-radius:25px; cursor:pointer; margin:10px; transition:0.3s; }
-.yes { background-color:white; color:#ff4b5c; font-weight:bold; }
-.no { background-color:#ff1e56; color:white; position:absolute; }
-button:hover { transform: scale(1.1); }
-.heart { position: fixed; color: white; animation: float 6s linear infinite; }
-@keyframes float { 0% {transform: translateY(100vh) scale(0.5); opacity:1;} 100% {transform: translateY(-10vh) scale(1.2); opacity:0;} }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Charmi 💖</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff4b5c, #ff758c);
+      text-align: center;
+      color: white;
+      overflow-x: hidden;
+    }
+    .container {
+      padding: 30px 15px;
+    }
+    h1 {
+      font-size: 2.5rem;
+    }
+    .typing {
+      font-size: 1.2rem;
+      margin: 20px auto;
+      max-width: 500px;
+      min-height: 50px;
+    }
 
-#envelope { perspective: 1000px; margin-top:30px; }
-.envelope-inner { width:200px; height:130px; position:relative; transform-style: preserve-3d; transition: transform 1s; cursor:pointer; }
-.envelope-inner.flipped { transform: rotateY(180deg); }
-.envelope-front, .envelope-back {
-    position:absolute; width:100%; height:100%; border-radius:10px; backface-visibility: hidden;
-    display:flex; justify-content:center; align-items:center; flex-direction:column;
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-.envelope-front { background:white; color:#ff4b5c; font-weight:bold; }
-.envelope-back { background:white; color:#333; transform: rotateY(180deg); }
-#letter img { width:100%; max-width:400px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.3); }
-</style>
+    /* SLIDESHOW */
+    .slideshow-container {
+      position: relative;
+      max-width: 350px;
+      margin: 30px auto;
+    }
+    .slide {
+      display: none;
+      position: relative;
+    }
+    .slide-img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.8);
+    }
+    .caption {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      font-size: 16px;
+      font-weight: bold;
+      background: rgba(255, 0, 102, 0.6);
+      padding: 8px;
+      border-radius: 0 0 20px 20px;
+      animation: floatText 2s ease-in-out infinite alternate;
+    }
+    @keyframes floatText {
+      from { transform: translateY(0px); }
+      to { transform: translateY(-5px); }
+    }
+    .fade { animation: fadeEffect 1.5s; }
+    @keyframes fadeEffect { from {opacity: .4} to {opacity: 1} }
+
+    /* PROPOSAL */
+    #proposal { margin-top: 30px; display: none; }
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+    .yes { background-color: white; color: #ff4b5c; font-weight: bold; }
+    .no {
+      background-color: #ff1e56;
+      color: white;
+      position: absolute;
+    }
+    button:hover { transform: scale(1.1); }
+
+    /* Floating Hearts */
+    .heart {
+      position: fixed;
+      color: white;
+      animation: float 6s linear infinite;
+    }
+    @keyframes float {
+      0% {transform: translateY(100vh) scale(0.5); opacity: 1;}
+      100% {transform: translateY(-10vh) scale(1.2); opacity: 0;}
+    }
+  </style>
 </head>
 <body>
-<div class="container" id="mainContainer">
+  <div class="container">
     <h1>Hey Charmi 💕</h1>
     <div class="typing" id="typing"></div>
 
+    <!-- Slideshow -->
     <div class="slideshow-container">
-        <div class="slide fade"><img src="photo1.jpg" class="slide-img"><div class="caption">Our First Memory 💕</div></div>
-        <div class="slide fade"><img src="photo2.jpg" class="slide-img"><div class="caption">Your Smile 😍</div></div>
-        <div class="slide fade"><img src="photo3.jpg" class="slide-img"><div class="caption">Distance Can’t Break Us 🌍❤️</div></div>
+      <div class="slide fade">
+        <img src="photo1.jpg" class="slide-img">
+        <div class="caption">Our First Memory 💕</div>
+      </div>
+      <div class="slide fade">
+        <img src="photo2.jpg" class="slide-img">
+        <div class="caption">Your Smile 😍</div>
+      </div>
+      <div class="slide fade">
+        <img src="photo3.jpg" class="slide-img">
+        <div class="caption">Distance Can’t Break Us 🌍❤️</div>
+      </div>
     </div>
 
+    <!-- Proposal -->
     <div id="proposal">
-        <h2>Will you be my Valentine? 💖</h2>
-        <button class="yes" onclick="acceptLove()">YES 💘</button>
-        <button class="no" id="noBtn">NO 🙈</button>
-    </div>
-</div>
-
-<script>
-const text = "Though we’re miles apart, you’re always in my heart. Every laugh, every word, every moment with you matters ❤️";
-let index=0;
-function typeEffect(){ 
-    if(index<text.length){ 
-        document.getElementById("typing").innerHTML+=text.charAt(index); 
-        index++; 
-        setTimeout(typeEffect,40); 
-    } 
-}
-typeEffect();
-
-let slideIndex=0; 
-autoSlides();
-function autoSlides(){ 
-    let slides=document.getElementsByClassName("slide"); 
-    for(let i=0;i<slides.length;i++) slides[i].style.display="none"; 
-    slideIndex++; 
-    if(slideIndex>slides.length) slideIndex=1; 
-    slides[slideIndex-1].style.display="block"; 
-    setTimeout(autoSlides,3000); 
-}
-
-setTimeout(()=>{document.getElementById("proposal").style.display="block";},10000);
-
-const noBtn=document.getElementById("noBtn");
-const cuteMessages=["I’ll wait for you 🥺","You mean a lot ❤️","Thinking of you already 💕","You’re special 😘"];
-noBtn.addEventListener("mouseover", function(){ 
-    const x=Math.random()*(window.innerWidth-150); 
-    const y=Math.random()*(window.innerHeight-100); 
-    noBtn.style.left=`${x}px`; 
-    noBtn.style.top=`${y}px`; 
-    const randomMessage=cuteMessages[Math.floor(Math.random()*cuteMessages.length)]; 
-    noBtn.innerText=randomMessage; 
-});
-
-function acceptLove(){
-    const container = document.getElementById("mainContainer");
-    container.innerHTML = `
-        <h1>She Said YES 💖</h1>
-        <div id="envelope">
-            <div id="envelope">
-  <div class="envelope-inner" onclick="flipEnvelope(this)">
-    <div class="envelope-front">
-      <p>Click to Open 💌</p>
-    </div>
-    <div class="envelope-back">
-      <img src="photo.jpg" alt="" style="width:100%; max-width:400px; border-radius:15px; box-shadow:0 10px 25px rgba(0,0,0,0.3);">
+      <h2>Will you be my Valentine? 💖</h2>
+      <button class="yes" onclick="acceptLove()">YES 💘</button>
+      <button class="no" id="noBtn">NO 🙈</button>
     </div>
   </div>
-</div>
-    `;
-    startFloatingHearts();
-}
 
-function flipEnvelope(el){
-    el.classList.add("flipped");
-}
+  <script>
+    /* Typing Effect */
+    const text = "Though we’re miles apart, you’re always in my heart. Every thought, every memory with you matters ❤️";
+    let index = 0;
+    function typeEffect() {
+      if (index < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 40);
+      }
+    }
+    typeEffect();
 
-function startFloatingHearts(){
-    setInterval(()=>{
-        const heart=document.createElement("div");
-        heart.innerHTML="💖";
-        heart.style.position="fixed";
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.bottom="-20px";
-        heart.style.fontSize=(15+Math.random()*20)+"px";
-        heart.style.animation="floatUp 6s linear";
+    /* Auto Slideshow */
+    let slideIndex = 0;
+    autoSlides();
+    function autoSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(autoSlides, 3000);
+    }
+
+    /* Show proposal after 10 sec */
+    setTimeout(() => {
+      document.getElementById("proposal").style.display = "block";
+    }, 10000);
+
+    /* NO button playful messages */
+    const noBtn = document.getElementById("noBtn");
+    const cuteMessages = [
+      "I’ll wait for you 🥺",
+      "You mean a lot ❤️",
+      "Thinking of you already 💕",
+      "You’re special 😘"
+    ];
+    noBtn.addEventListener("mouseover", function() {
+      const x = Math.random() * (window.innerWidth - 150);
+      const y = Math.random() * (window.innerHeight - 100);
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+      const randomMessage = cuteMessages[Math.floor(Math.random() * cuteMessages.length)];
+      noBtn.innerText = randomMessage;
+    });
+
+    /* YES click -> envelope & love letter */
+    function acceptLove() {
+      document.body.innerHTML = `
+        <div style="height:100vh; background: linear-gradient(135deg, #ff4b5c, #ff758c); display:flex; flex-direction:column; justify-content:center; align-items:center; color:white; text-align:center; padding:20px;">
+          <h1>She Said YES 💖</h1>
+          <div id="envelope" onclick="openLetter()" style="margin-top:30px; width:200px; height:130px; background:white; position:relative; cursor:pointer; border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,0.3);">
+            <div style="position:absolute; width:0; height:0; border-left:100px solid transparent; border-right:100px solid transparent; border-bottom:65px solid #ff4b5c; top:-65px;"></div>
+            <p style="color:#ff4b5c; margin-top:45px; font-weight:bold;"> Click to Open 💌 </p>
+          </div>
+          <div id="letter" style="display:none; margin-top:20px; background:white; color:#333; padding:25px; border-radius:15px; max-width:500px; text-align:left; box-shadow:0 15px 40px rgba(0,0,0,0.3); animation: fadeIn 2s ease-in-out;">
+            <h2 style="text-align:center; color:#ff4b5c;">My Dearest Charmi 💖</h2>
+            <p>No distance can weaken us—if anything, it only makes my love for you stronger. I’m not going anywhere; I’m yours, completely and forever.</p>
+            <p>I promise to hold you in my heart always, to cherish you in every moment, and to never let you go.</p>
+            <p style="margin-top:15px; text-align:right;">Forever Yours,<br>Dhaval ❤️</p>
+          </div>
+        </div>
+        <style>
+          @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+        </style>
+      `;
+      startFloatingHearts();
+    }
+
+    function openLetter() {
+      document.getElementById("envelope").style.display = "none";
+      document.getElementById("letter").style.display = "block";
+    }
+
+    /* Floating hearts */
+    function startFloatingHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-20px";
+        heart.style.fontSize = "20px";
+        heart.style.animation = "floatUp 4s linear";
         document.body.appendChild(heart);
-        setTimeout(()=>heart.remove(),6000);
-    },300);
+        setTimeout(() => heart.remove(), 4000);
+      }, 400);
 
-    const style=document.createElement("style");
-    style.innerHTML=`@keyframes floatUp {0%{transform:translateY(0) rotate(0deg);opacity:1;}50%{transform:translateY(-50vh) rotate(15deg);opacity:0.8;}100%{transform:translateY(-100vh) rotate(-15deg);opacity:0;}}`;
-    document.head.appendChild(style);
-}
-</script>
+      const style = document.createElement("style");
+      style.innerHTML = `
+        @keyframes floatUp {
+          from { transform: translateY(0); opacity:1; }
+          to { transform: translateY(-100vh); opacity:0; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  </script>
 </body>
 </html>
